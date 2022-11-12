@@ -11,12 +11,9 @@ int main(int argc, char *argv[]){
         printf("Erreur lors du lancement du programme. ");
         printf("%s",strerror(errno));
     }else{
-        printf("Programme lance.");
-        t_word_list dictionnaryStdList;
-        dictionnaryStdList.head = NULL;
-        createListFromFile(&dictionnaryStdList,monDico);
-        //printf("\n A : %s\tR : %s\t F : %s\n",dictionnaryStdList.head->next->word->arrowed,dictionnaryStdList.head->next->word->radical,dictionnaryStdList.head->next->word->forms);
-        printList(&dictionnaryStdList);
+        printf("Programme lance.\n");
+        t_tree mytree = createBaseTree();
+        createListFromFile(&mytree,monDico);
     }
     return 0;
 }
