@@ -39,7 +39,7 @@ void createListFromFile(p_tree nameTree,p_tree verbsTree,p_tree adjTree,p_tree a
         }
 
         for(int i = 0; i < (int) strlen(radical); i++){
-            // ================= Les problèmes commencent ici
+            // ================== Les problèmes commencent ici
 
             if(isForbiddenChar(radical[i]) == 0) {
                 p_cell ptr_cell = NULL;
