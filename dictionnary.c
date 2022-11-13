@@ -112,11 +112,11 @@ int isWordInTree(char * word,t_tree mytree){
                     ptr_cell = ptr_cell->next;
                 }
             }
-
             if(hasFound == 0){
                 return 0;
             }
         }
+
 
     }
     return 1;

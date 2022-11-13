@@ -10,6 +10,7 @@ typedef struct s_tree
 } t_tree, *p_tree;
 
 t_tree createBaseTree();
+
 FILE* importFile(char* dictionnaryName);
 void createListFromFile(p_tree nameTree,p_tree verbsTree,p_tree adjTree,p_tree advTree,FILE * monFichier);
 int isWordInTree(char * word,t_tree mytree);
