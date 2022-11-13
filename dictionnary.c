@@ -95,3 +95,29 @@ void createListFromFile(p_tree nameTree,p_tree verbsTree,p_tree adjTree,p_tree a
     free(line);
     fclose(monFichier);
 }
+int isWordInTree(char * word,t_tree mytree){
+    p_letter_node tmp = mytree.root;
+    for(int i = 0; i < (int) strlen(word); i++){
+        // ================== Les problèmes commencent ici
+
+        if(isForbiddenChar(word[i]) == 0) {
+            p_cell ptr_cell = NULL;
+            int hasFound = 0;
+            ptr_cell = tmp->sons->head;// On se met sur la tête de la liste des fils
+            while(ptr_cell != NULL && hasFound != 1){
+                if(word[i] == ptr_cell->son->letter){
+                    tmp = ptr_cell->son;
+                    hasFound = 1;
+                }else{
+                    ptr_cell = ptr_cell->next;
+                }
+            }
+
+            if(hasFound == 0){
+                return 0;
+            }
+        }
+
+    }
+    return 1;
+}
