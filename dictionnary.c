@@ -78,9 +78,9 @@ void createListFromFile(p_tree mytree,FILE * monFichier){
         }
 
 
-        /*free(arrowed);
+        free(arrowed);
         free(radical);
-        free(forms);*/
+        free(forms);
     }
 
     free(line);

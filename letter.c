@@ -15,8 +15,8 @@ p_cell createCell(char letter){
 p_word_cell createWordCell(){
     p_word_cell myCell = (p_word_cell) malloc(sizeof(t_word_cell));
     p_word myWord = (p_word) malloc(sizeof(t_word));
-    myWord->arrowed = calloc(1,sizeof(char*));
-    myWord->forms = calloc(1,sizeof(char*));
+    myWord->arrowed = calloc(40,sizeof(char));
+    myWord->forms = calloc(40,sizeof(char));
     myCell->son = myWord;
     myCell->next = NULL;
     return myCell;
