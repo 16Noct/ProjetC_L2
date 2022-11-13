@@ -34,7 +34,7 @@ void createListFromFile(p_tree nameTree,p_tree verbsTree,p_tree adjTree,p_tree a
             tmp = nameTree->root;
         }else if(strstr(forms,"Adj:")){
             tmp = adjTree->root;
-        }else if(strstr(forms,"Adv")){
+        }else{
             tmp = advTree->root;
         }
 
