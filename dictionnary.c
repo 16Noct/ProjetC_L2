@@ -14,7 +14,7 @@ FILE* importFile(char* dictionnaryName){
     return dictionnaryFile;
 }
 
-void createListFromFile(p_tree mytree,FILE * monFichier){
+void createListFromFile(p_tree nameTree,p_tree verbsTree,p_tree adjTree,p_tree advTree,FILE * monFichier){
     char * line = (char *) malloc(300*sizeof(char));
     while (fgets(line,120,monFichier)) {
         // On parse les différents éléments de chaque ligne
@@ -28,7 +28,16 @@ void createListFromFile(p_tree mytree,FILE * monFichier){
         //On insère les différents éléments sous forme de noeud de l'arbre
         printf("A: %s R : %s F : %s\n",arrowed,radical,forms);
         p_letter_node tmp = NULL;
-        tmp = mytree->root;
+        if(strstr(forms,"Ver:")){
+            tmp = verbsTree->root;
+        }else if(strstr(forms,"Nom:")){
+            tmp = nameTree->root;
+        }else if(strstr(forms,"Adj:")){
+            tmp = adjTree->root;
+        }else if(strstr(forms,"Adv")){
+            tmp = advTree->root;
+        }
+
         for(int i = 0; i < (int) strlen(radical); i++){
             // ================== Les problèmes commencent ici
 
