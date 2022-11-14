@@ -40,6 +40,7 @@ p_letter_node createLetterNode(char letter){
     myNode->letter = letter;
     myNode->sons = createEmptyList();
     myNode->arrowForms = createEmptyWordList();
+    myNode->nbSons = 0;
     return myNode;
 }
 

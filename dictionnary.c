@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "dictionnary.h"
+#include <time.h>
 
 t_tree createBaseTree(){
     t_tree mytree;
@@ -26,7 +27,7 @@ void createListFromFile(p_tree nameTree,p_tree verbsTree,p_tree adjTree,p_tree a
         strcpy(radical,strtok(NULL,"\t"));
         strcpy(forms,strtok(NULL,"\n"));
         //On insère les différents éléments sous forme de noeud de l'arbre
-        printf("A: %s R : %s F : %s\n",arrowed,radical,forms);
+        //printf("A: %s R : %s F : %s\n",arrowed,radical,forms);
         p_letter_node tmp = NULL;
         if(strstr(forms,"Ver:")){
             tmp = verbsTree->root;
@@ -34,7 +35,7 @@ void createListFromFile(p_tree nameTree,p_tree verbsTree,p_tree adjTree,p_tree a
             tmp = nameTree->root;
         }else if(strstr(forms,"Adj:")){
             tmp = adjTree->root;
-        }else{
+        }else {
             tmp = advTree->root;
         }
 
@@ -59,12 +60,14 @@ void createListFromFile(p_tree nameTree,p_tree verbsTree,p_tree adjTree,p_tree a
                     p_cell mycell = createCell(radical[i]);
                     if(tmp->sons->head == NULL){
                         tmp->sons->head = mycell;
+                        tmp->nbSons+=1;
                     }else{
                         p_cell tmp_cell = tmp->sons->head;
                         while(tmp_cell->next != NULL){
                             tmp_cell = tmp_cell->next;
                         }
                         tmp_cell->next = mycell;
+                        tmp->nbSons+=1;
                     }
                     tmp = mycell->son;
                 }
@@ -95,6 +98,7 @@ void createListFromFile(p_tree nameTree,p_tree verbsTree,p_tree adjTree,p_tree a
     free(line);
     fclose(monFichier);
 }
+
 int isWordInTree(char * word,t_tree mytree){
     p_letter_node tmp = mytree.root;
     for(int i = 0; i < (int) strlen(word); i++){
@@ -112,12 +116,71 @@ int isWordInTree(char * word,t_tree mytree){
                     ptr_cell = ptr_cell->next;
                 }
             }
+
             if(hasFound == 0){
                 return 0;
             }
         }
 
-
     }
     return 1;
 }
+
+char * extractRandomRadicalWord(t_tree mytree){
+        char * myFinalWord = calloc(60,sizeof(char));
+        p_letter_node tmp = mytree.root;
+
+        while(tmp->sons->head != NULL){
+            p_cell ptr_cell = tmp->sons->head;
+            int i = 0;
+            int max = tmp->nbSons-1;
+            int min = 0;
+            int num = 0;
+            int randNum = rand();
+            num = (( randNum % (max + 1 - min)) + min);
+            for(i = 0;i < num; i++){
+                ptr_cell = ptr_cell->next;
+            }
+
+            printf("%c",ptr_cell->son->letter);
+            //strcat(myFinalWord,&ptr_cell->son->letter);
+            tmp = ptr_cell->son;
+        }
+        return myFinalWord;
+}
+
+char * extractRandomArrowedWord(t_tree mytree){
+    char * myFinalWord = calloc(60,sizeof(char));
+    p_letter_node tmp = mytree.root;
+    p_cell ptr_cell;
+    while(tmp->sons->head != NULL){
+        ptr_cell = tmp->sons->head;
+        int i = 0;
+        int max = tmp->nbSons-1;
+        int min = 0;
+        int num = 0;
+        int randNum = rand();
+        num = (( randNum % (max + 1 - min)) + min);
+        for(i = 0;i < num; i++){
+            ptr_cell = ptr_cell->next;
+        }
+
+        //strcat(myFinalWord,&ptr_cell->son->letter);
+        tmp = ptr_cell->son;
+    }
+    // On prend le premier qu'on trouve là
+    char * arrowed = ptr_cell->son->arrowForms->head->son->arrowed;
+    char * forms = ptr_cell->son->arrowForms->head->son->forms;
+    if(strstr(forms,"Nom:Mas+SG")){
+        printf("le ");
+    }else if(strstr(forms,"Nom:Mas+PL")){
+        printf("les ");
+    }else if(strstr(forms,"Nom:Fem+SG")){
+        printf("la ");
+    }else if(strstr(forms,"Nom:")){
+        printf("les ");
+    }
+    printf("%s",ptr_cell->son->arrowForms->head->son->arrowed);
+    return myFinalWord;
+}
+

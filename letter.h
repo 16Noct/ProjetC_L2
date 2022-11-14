@@ -45,6 +45,7 @@ struct s_letter_node
     char letter ;
     t_std_list  * sons ;
     t_word_list  * arrowForms;
+    int nbSons;
 
 };
 
