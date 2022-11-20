@@ -26,6 +26,7 @@ typedef struct s_word_list
 
 
 
+
 typedef struct s_cell
 {
     p_letter_node son ;
