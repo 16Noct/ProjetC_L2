@@ -26,8 +26,7 @@ https://prnt.sc/sUXckgsxnJHL
 POUR UTILISER LE PETIT DICTIONNAIRE : 
 1. Mettre la variable debugMode à 0 dans main.c
 2. Mettre à jour le chemin vers le petit dictionnaire (dico.txt)
-3. Changer la valeur de la variable userChoice en fonction du modèle de phrase que l'on veut générer
-4. lancer le programme en **MODE DEBUG**
+3. lancer le programme en **MODE NORMAL**
 
 https://prnt.sc/5YVNJF0gk1Xb
 
