@@ -1,7 +1,3 @@
-//
-// Created by Alex on 2022/11/02.
-//
-
 #ifndef PROJETCREEL_LETTER_H
 #define PROJETCREEL_LETTER_H
 
@@ -45,6 +41,7 @@ struct s_letter_node
     char letter ;
     t_std_list  * sons ;
     t_word_list  * arrowForms;
+    int nbSons;
 
 };
 

@@ -1,6 +1,3 @@
-//
-// Created by Alex on 2022/11/04.
-//
 #include "letter.h"
 #include <stdlib.h>
 
@@ -40,6 +37,7 @@ p_letter_node createLetterNode(char letter){
     myNode->letter = letter;
     myNode->sons = createEmptyList();
     myNode->arrowForms = createEmptyWordList();
+    myNode->nbSons = 0;
     return myNode;
 }
 
@@ -50,5 +48,5 @@ int isForbiddenChar(char letter){
             return 1;
         }
     }
-        return 0;
+    return 0;
 }
