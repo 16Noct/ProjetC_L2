@@ -47,4 +47,5 @@ int main(int argc, char *argv[]){
         printf("%s ",extractRandomArrowedWord(adjTree));
     }
     return 0;
+
 }

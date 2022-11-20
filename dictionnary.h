@@ -15,3 +15,4 @@ void createListFromFile(p_tree nameTree,p_tree verbsTree,p_tree adjTree,p_tree a
 int isWordInTree(char * word,t_tree mytree);
 char * extractRandomRadicalWord(t_tree mytree);
 char * extractRandomArrowedWord(t_tree mytree);
+
