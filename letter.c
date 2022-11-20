@@ -10,6 +10,7 @@ p_cell createCell(char letter){
 }
 
 
+
 p_word_cell createWordCell(){
     p_word_cell myCell = (p_word_cell) malloc(sizeof(t_word_cell));
     p_word myWord = (p_word) malloc(sizeof(t_word));

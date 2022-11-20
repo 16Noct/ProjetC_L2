@@ -16,3 +16,4 @@ int isWordInTree(char * word,t_tree mytree);
 char * extractRandomRadicalWord(t_tree mytree);
 char * extractRandomArrowedWord(t_tree mytree);
 
+
